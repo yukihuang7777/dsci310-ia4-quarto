@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -123,8 +89,8 @@ window.Quarto = {
 
 <body>
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
-<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
@@ -136,8 +102,6 @@ window.Quarto = {
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
-</div>
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -166,28 +130,13 @@ window.Quarto = {
 </header>
 
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-</div>
 <section id="aim" class="level1">
 <h1>Aim</h1>
 <p>This project explores the historical population of horses in Canada between 1906 and 1972 for each province.</p>
 </section>
 <section id="data" class="level1">
 <h1>Data</h1>
-<p>Horse population data were sourced from the <a href="http://open.canada.ca/en/open-data">Government of Canada’s Open Data website</a> <span class="citation" data-cites="horses1">(<a href="#ref-horses1" role="doc-biblioref">Government of Canada 2017a</a>)</span> <span class="citation" data-cites="horses2">(<a href="#ref-horses2" role="doc-biblioref">Government of Canada 2017b</a>)</span>.</p>
+<p>Horse population data were sourced from the <a href="http://open.canada.ca/en/open-data">Government of Canada’s Open Data website</a> <span class="citation" data-cites="horses1 horses2">(<a href="#ref-horses1" role="doc-biblioref">Government of Canada 2017a</a>, <a href="#ref-horses2" role="doc-biblioref">2017b</a>)</span>.</p>
 </section>
 <section id="methods" class="level1">
 <h1>Methods</h1>
@@ -195,27 +144,27 @@ window.Quarto = {
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
-<p><img src="../results/horse_pops_plot.png" class="img-fluid"></p>
-<p>Figure 1: Horse populations for all provinces in Canada from 1906 - 1972.</p>
-<p>We can see from Figure 1 that Ontario, Saskatchewan and Alberta have had the highest horse populations in Canada. All provinces have had a decline in horse populations since 1940. This is likely due to the rebound of the Canadian automotive industry after the Great Depression and the Second World War. An interesting follow-up visualisation would be car sales per year for each Province over the time period visualised above to further support this hypothesis.</p>
-<p>Suppose we were interested in looking in more closely at the province with the highest spread (in terms of standard deviation) of horse populations. We present the standard deviations in Table 1.</p>
-<p>Table 1. Standard deviation of historical (1906-1972) horse populations for each Canadian province.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>horses_sd_table <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../results/horses_sd.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 9 Columns: 2
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (1): Province
-dbl (1): Std
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div id="fig-horse_pops_plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-horse_pops_plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/horse_pops_plot.png" class="img-fluid figure-img">
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>largest_sd <span class="ot">&lt;-</span> horses_sd_table<span class="sc">$</span>Province[<span class="dv">1</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(horses_sd_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-horse_pops_plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Horse populations for all provinces in Canada from 1906 - 1972
+</figcaption>
+</figure>
+</div>
+<p>We can see from <a href="#fig-horse_pops_plot" class="quarto-xref">Figure&nbsp;1</a> that Ontario, Saskatchewan and Alberta have had the highest horse populations in Canada. All provinces have had a decline in horse populations since 1940. This is likely due to the rebound of the Canadian automotive industry after the Great Depression and the Second World War. An interesting follow-up visualisation would be car sales per year for each Province over the time period visualised above to further support this hypothesis.</p>
+<p>Suppose we were interested in looking in more closely at the province with the highest spread (in terms of standard deviation) of horse populations. We present the standard deviations in <a href="#tbl-horses_sd_table" class="quarto-xref">Table&nbsp;1</a>.</p>
+<div class="cell">
+<div id="tbl-horses_sd_table" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-horses_sd_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Standard deviation of historical (1906-1972) horse populations for each Canadian province
+</figcaption>
+<div aria-describedby="tbl-horses_sd_table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Province</th>
@@ -263,12 +212,23 @@ dbl (1): Std
 </table>
 </div>
 </div>
+</figure>
+</div>
+</div>
 <p>Note that we define standard deviation (of a sample) as</p>
 <p><span class="math display">\[s = \sqrt{\frac{\sum_{i=1}^N (x_i - \overline{x})^2}{N-1} }\]</span></p>
-<p>Additionally, note that in Table 1 we consider the sample standard deviation of the number of horses during the same time span as Figure 1.</p>
-<p><img src="../results/horse_pop_plot_largest_sd.png" class="img-fluid"></p>
-<p>Figure 2: Horse populations for the province with the largest standard deviation</p>
-<p>In Figure 2 we zoom in and look at the province of ???, which had the largest spread of values in terms of standard deviation.</p>
+<p>Additionally, note that in <a href="#tbl-horses_sd_table" class="quarto-xref">Table&nbsp;1</a> we consider the sample standard deviation of the number of horses during the same time span as <a href="#fig-horse_pops_plot" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<div id="fig-horse_pop_plot_largest_sd" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-horse_pop_plot_largest_sd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../results/horse_pop_plot_largest_sd.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-horse_pop_plot_largest_sd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Horse populations for the province with the largest standard deviation
+</figcaption>
+</figure>
+</div>
+<p>In <a href="#fig-horse_pop_plot_largest_sd" class="quarto-xref">Figure&nbsp;2</a> we zoom in and look at the province of Saskatchewan, which had the largest spread of values in terms of standard deviation.</p>
 </section>
 <section id="references" class="level1 unnumbered">
 
