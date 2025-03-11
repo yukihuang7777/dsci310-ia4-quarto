@@ -21,6 +21,9 @@ reports/qmd_example.html: results reports/qmd_example.qmd
 reports/qmd_example.pdf: results reports/qmd_example.qmd
 	quarto render reports/qmd_example.qmd --to pdf
 
+docs/index.html: results reports/qmd_example.qmd
+	quarto render reports/qmd_example.qmd --output-dir docs --output index.html
+
 # clean
 clean:
 	rm -rf results
